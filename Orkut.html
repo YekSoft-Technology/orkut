@@ -1,0 +1,1177 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orkut - sosyal ağ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            background-color: #ffffff;
+            color: #333;
+        }
+        
+        .login-page {
+            background: linear-gradient(to bottom, #4f8bd6, #2a5bb3);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-container {
+            background: white;
+            border: 1px solid #1e4a8c;
+            border-radius: 5px;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .signup-container {
+            background: white;
+            border: 1px solid #1e4a8c;
+            border-radius: 5px;
+            padding: 30px;
+            width: 450px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .login-logo {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .login-title {
+            color: #1f4788;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .login-form, .signup-form {
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 11px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+        
+        .login-btn {
+            background: linear-gradient(to bottom, #4f8bd6, #2a5bb3);
+            color: white;
+            border: 1px solid #1e4a8c;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 2px;
+            margin: 10px 5px;
+        }
+        
+        .login-btn:hover {
+            background: linear-gradient(to bottom, #5a96e1, #2f60be);
+        }
+        
+        .signup-link {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .signup-link a {
+            color: #1f4788;
+            text-decoration: none;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .header {
+            background: linear-gradient(to bottom, #4f8bd6, #2a5bb3);
+            padding: 8px 0;
+            border-bottom: 1px solid #1e4a8c;
+        }
+        
+        .header-content {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        
+        .logo {
+            height: 30px;
+        }
+        
+        .header-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .header-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .user-info {
+            color: white;
+            font-size: 11px;
+            margin-right: 10px;
+        }
+        
+        .main-container {
+            max-width: 760px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 500px;
+        }
+        
+        .content-wrapper {
+            display: table;
+            width: 100%;
+        }
+        
+        .sidebar {
+            display: table-cell;
+            width: 180px;
+            vertical-align: top;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-right: 1px solid #ddd;
+        }
+        
+        .main-content {
+            display: table-cell;
+            vertical-align: top;
+            padding: 10px;
+        }
+        
+        .module {
+            background-color: white;
+            border: 1px solid #c3d9ff;
+            margin-bottom: 10px;
+        }
+        
+        .module-header {
+            background: linear-gradient(to bottom, #e8f0fe, #d2e3fc);
+            padding: 5px 8px;
+            border-bottom: 1px solid #c3d9ff;
+            font-weight: bold;
+            color: #1f4788;
+            font-size: 11px;
+        }
+        
+        .module-content {
+            padding: 8px;
+        }
+        
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .profile-name {
+            font-weight: bold;
+            color: #1f4788;
+            margin-bottom: 3px;
+        }
+        
+        .profile-status {
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .friends-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .friend-item {
+            width: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .friend-pic {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 8px;
+        }
+        
+        .friend-name {
+            font-size: 9px;
+            color: #1f4788;
+            text-decoration: none;
+        }
+        
+        .scrapbook-item {
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+        }
+        
+        .scrap-author {
+            font-weight: bold;
+            color: #1f4788;
+            margin-bottom: 3px;
+        }
+        
+        .scrap-content {
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .scrap-date {
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .navigation-links {
+            list-style: none;
+        }
+        
+        .navigation-links li {
+            margin-bottom: 3px;
+        }
+        
+        .navigation-links a {
+            color: #1f4788;
+            text-decoration: none;
+            font-size: 11px;
+        }
+        
+        .navigation-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ccc;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+        
+        .search-btn {
+            background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+            border: 1px solid #999;
+            padding: 2px 8px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+        
+        .online-indicator {
+            color: green;
+            font-size: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 10px;
+            color: #666;
+            font-size: 10px;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        
+        .testimonial-item {
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #1f4788;
+            font-size: 10px;
+        }
+        
+        .testimonial-text {
+            color: #333;
+            font-size: 10px;
+            margin: 2px 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        .success-message {
+            color: green;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+        
+        .tweet-composer {
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+        
+        .tweet-input {
+            width: 100%;
+            height: 80px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 11px;
+            resize: vertical;
+        }
+        
+        .tweet-controls {
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .char-counter {
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .char-counter.warning {
+            color: orange;
+        }
+        
+        .char-counter.error {
+            color: red;
+        }
+        
+        .post-btn {
+            background: linear-gradient(to bottom, #4f8bd6, #2a5bb3);
+            color: white;
+            border: 1px solid #1e4a8c;
+            padding: 5px 15px;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+        
+        .post-btn:hover {
+            background: linear-gradient(to bottom, #5a96e1, #2f60be);
+        }
+        
+        .post-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .add-friend-btn {
+            background: linear-gradient(to bottom, #90ee90, #70cc70);
+            color: #333;
+            border: 1px solid #60bb60;
+            padding: 3px 8px;
+            font-size: 9px;
+            cursor: pointer;
+            border-radius: 2px;
+            margin-top: 3px;
+        }
+        
+        .add-friend-btn:hover {
+            background: linear-gradient(to bottom, #a0ffa0, #80dd80);
+        }
+        
+        .people-search {
+            margin-bottom: 10px;
+        }
+        
+        .search-results {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .person-item {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .person-pic {
+            width: 30px;
+            height: 30px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 8px;
+        }
+        
+        .person-info {
+            flex: 1;
+        }
+        
+        .person-name {
+            font-weight: bold;
+            color: #1f4788;
+            font-size: 11px;
+        }
+        
+        .person-location {
+            color: #666;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Giriş Sayfası -->
+    <div id="loginPage" class="login-page">
+        <div class="login-container">
+            <img src="https://orkut.com/img/orkut-logo.png" alt="orkut" class="login-logo">
+            <div class="login-title">Sosyal ağına hoş geldin</div>
+            
+            <div class="login-form">
+                <div class="form-group">
+                    <label class="form-label">E-posta:</label>
+                    <input type="email" id="loginEmail" class="form-input" placeholder="ornek@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Şifre:</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="şifrenizi girin">
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="login-btn" onclick="login()">Giriş Yap</button>
+                    <button class="login-btn" onclick="showSignup()">Üye Ol</button>
+                </div>
+                
+                <div id="loginError" class="error-message hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Üye Olma Sayfası -->
+    <div id="signupPage" class="login-page hidden">
+        <div class="signup-container">
+            <img src="https://orkut.com/img/orkut-logo.png" alt="orkut" class="login-logo">
+            <div class="login-title">Orkut'a katıl</div>
+            
+            <div class="signup-form">
+                <div class="form-group">
+                    <label class="form-label">Ad Soyad:</label>
+                    <input type="text" id="signupName" class="form-input" placeholder="Adınız Soyadınız">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">E-posta:</label>
+                    <input type="email" id="signupEmail" class="form-input" placeholder="ornek@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Şifre:</label>
+                    <input type="password" id="signupPassword" class="form-input" placeholder="güvenli bir şifre">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Yaş:</label>
+                    <input type="number" id="signupAge" class="form-input" min="13" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Cinsiyet:</label>
+                    <select id="signupGender" class="form-select">
+                        <option value="">Seçin...</option>
+                        <option value="erkek">Erkek</option>
+                        <option value="kadın">Kadın</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Şehir:</label>
+                    <input type="text" id="signupLocation" class="form-input" placeholder="İstanbul, Türkiye">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">İlişki Durumu:</label>
+                    <select id="signupRelationship" class="form-select">
+                        <option value="">Seçin...</option>
+                        <option value="bekar">Bekar</option>
+                        <option value="ilişkide">İlişkide</option>
+                        <option value="evli">Evli</option>
+                        <option value="karışık">Karışık</option>
+                    </select>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="login-btn" onclick="signup()">Hesap Oluştur</button>
+                    <button class="login-btn" onclick="showLogin()">Giriş Yap</button>
+                </div>
+                
+                <div id="signupError" class="error-message hidden"></div>
+                <div id="signupSuccess" class="success-message hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana Sayfa -->
+    <div id="mainPage" class="hidden">
+        <div class="header">
+            <div class="header-content">
+                <img src="https://orkut.com/img/orkut-logo.png" alt="orkut" class="logo">
+                <div class="header-links">
+                    <div class="user-info">Hoş geldin, <span id="currentUser"></span></div>
+                    <a href="#" onclick="showHome()">ana sayfa</a>
+                    <a href="#" onclick="showProfile()">profil</a>
+                    <a href="#" onclick="showFriends()">arkadaşlar</a>
+                    <a href="#" onclick="showMessages()">mesajlar</a>
+                    <a href="#" onclick="showCommunities()">topluluklar</a>
+                    <a href="#" onclick="showSearch()">arama</a>
+                    <a href="#" onclick="logout()">çıkış</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="content-wrapper">
+                <div class="sidebar">
+                    <div class="module">
+                        <div class="module-header">profil</div>
+                        <div class="module-content">
+                            <div class="profile-pic">FOTO</div>
+                            <div class="profile-name" id="profileName"></div>
+                            <div class="profile-status" id="profileLocation"></div>
+                            <div class="online-indicator">● çevrimiçi</div>
+                            <br>
+                            <div style="font-size: 10px;" id="profileDetails">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-header">arkadaşlar (<span id="friendCount">0</span>)</div>
+                        <div class="module-content">
+                            <div class="friends-list" id="friendsList">
+                            </div>
+                            <div style="margin-top: 8px;" id="friendsViewAll" class="hidden">
+                                <a href="#" style="font-size: 10px; color: #1f4788;" onclick="showFriends()">tümünü gör »</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-header">kişi ara</div>
+                        <div class="module-content">
+                            <div class="people-search">
+                                <input type="text" id="peopleSearch" class="search-box" placeholder="kişi ara..." onkeyup="searchPeople()">
+                            </div>
+                            <div id="searchResults" class="search-results"></div>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-header">navigasyon</div>
+                        <div class="module-content">
+                            <ul class="navigation-links">
+                                <li><a href="#" onclick="showHome()">ana sayfa</a></li>
+                                <li><a href="#" onclick="showProfile()">profili düzenle</a></li>
+                                <li><a href="#" onclick="showPhotos()">fotoğraflar</a></li>
+                                <li><a href="#" onclick="showScraps()">scraps</a></li>
+                                <li><a href="#" onclick="showTestimonials()">testimonials</a></li>
+                                <li><a href="#" onclick="showCommunities()">topluluklar</a></li>
+                                <li><a href="#" onclick="showEvents()">etkinlikler</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-content">
+                    <div class="module">
+                        <div class="module-header">durum paylaş</div>
+                        <div class="module-content">
+                            <div class="tweet-composer">
+                                <textarea id="statusInput" class="tweet-input" placeholder="Ne düşünüyorsun? Arkadaşlarınla paylaş..." oninput="updateCharCounter()"></textarea>
+                                <div class="tweet-controls">
+                                    <span id="charCounter" class="char-counter">0/500</span>
+                                    <button id="postBtn" class="post-btn" onclick="postStatus()">Paylaş</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-header">scrapbook</div>
+                        <div class="module-content">
+                            <div id="scrapsList">
+                                <div class="empty-state">
+                                    Henüz hiç scrap yok. İlk scrapi sen yaz!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="module">
+                        <div class="module-header">son testimonials</div>
+                        <div class="module-content" id="testimonialsList">
+                            <div class="empty-state">
+                                Henüz testimonial yok. Arkadaşların sana testimonial yazmasını bekle!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            orkut © 2004 Google - hakkında - güvenlik - koşullar - gizlilik
+        </div>
+    </div>
+
+    <script>
+        // Veritabanı simülasyonu
+        let users = {};
+        let currentUserEmail = null;
+
+        // Kullanıcı verilerini yönetme
+        function saveData() {
+            // Gerçek uygulamada burada veritabanına kaydedilir
+        }
+
+        function getCurrentUser() {
+            return users[currentUserEmail];
+        }
+
+        function getAllUsers() {
+            return Object.values(users).map(user => ({
+                email: user.email,
+                name: user.name,
+                location: user.location,
+                age: user.age,
+                gender: user.gender
+            }));
+        }
+
+        // Giriş işlemleri
+        function login() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const errorDiv = document.getElementById('loginError');
+
+            errorDiv.classList.add('hidden');
+
+            if (!email || !password) {
+                showError('loginError', 'Lütfen e-posta ve şifrenizi girin.');
+                return;
+            }
+
+            if (users[email] && users[email].password === password) {
+                currentUserEmail = email;
+                showMainPage();
+            } else {
+                showError('loginError', 'Hatalı e-posta veya şifre.');
+            }
+        }
+
+        function signup() {
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const age = document.getElementById('signupAge').value;
+            const gender = document.getElementById('signupGender').value;
+            const location = document.getElementById('signupLocation').value.trim();
+            const relationship = document.getElementById('signupRelationship').value;
+
+            document.getElementById('signupError').classList.add('hidden');
+            document.getElementById('signupSuccess').classList.add('hidden');
+
+            if (!name || !email || !password || !age || !gender || !location || !relationship) {
+                showError('signupError', 'Lütfen tüm alanları doldurun.');
+                return;
+            }
+
+            if (users[email]) {
+                showError('signupError', 'Bu e-posta adresi zaten kullanılıyor.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('signupError', 'Şifre en az 6 karakter olmalıdır.');
+                return;
+            }
+
+            // Yeni kullanıcı oluştur
+            users[email] = {
+                email: email,
+                name: name,
+                password: password,
+                age: parseInt(age),
+                gender: gender,
+                location: location,
+                relationship: relationship,
+                friends: [],
+                scraps: [],
+                testimonials: [],
+                joinDate: new Date().toLocaleDateString('tr-TR')
+            };
+
+            saveData();
+
+            showSuccess('signupSuccess', 'Hesabınız başarıyla oluşturuldu! Giriş yapabilirsiniz.');
+            
+            // 2 saniye sonra giriş sayfasına yönlendir
+            setTimeout(() => {
+                showLogin();
+            }, 2000);
+        }
+
+        function showLogin() {
+            document.getElementById('signupPage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            clearForms();
+        }
+
+        function showSignup() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('signupPage').classList.remove('hidden');
+            clearForms();
+        }
+
+        function clearForms() {
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').classList.add('hidden');
+            
+            document.getElementById('signupName').value = '';
+            document.getElementById('signupEmail').value = '';
+            document.getElementById('signupPassword').value = '';
+            document.getElementById('signupAge').value = '';
+            document.getElementById('signupGender').value = '';
+            document.getElementById('signupLocation').value = '';
+            document.getElementById('signupRelationship').value = '';
+            document.getElementById('signupError').classList.add('hidden');
+            document.getElementById('signupSuccess').classList.add('hidden');
+        }
+
+        function showMainPage() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('signupPage').classList.add('hidden');
+            document.getElementById('mainPage').classList.remove('hidden');
+            
+            loadUserData();
+        }
+
+        function loadUserData() {
+            const user = getCurrentUser();
+            
+            document.getElementById('currentUser').textContent = user.name;
+            document.getElementById('profileName').textContent = user.name;
+            document.getElementById('profileLocation').textContent = user.location;
+            document.getElementById('profileDetails').innerHTML = `
+                <div>yaş: ${user.age}</div>
+                <div>cinsiyet: ${user.gender}</div>
+                <div>ilişki durumu: ${user.relationship}</div>
+                <div>üye olma: ${user.joinDate}</div>
+            `;
+
+            updateFriendsList();
+            updateScrapsList();
+            updateTestimonialsList();
+            updateCharCounter();
+        }
+
+        function updateFriendsList() {
+            const user = getCurrentUser();
+            const friendsList = document.getElementById('friendsList');
+            const friendCount = document.getElementById('friendCount');
+            const viewAllLink = document.getElementById('friendsViewAll');
+            
+            friendCount.textContent = user.friends.length;
+            friendsList.innerHTML = '';
+
+            if (user.friends.length === 0) {
+                friendsList.innerHTML = '<div class="empty-state">Henüz arkadaşın yok. Kişi arama bölümünden arkadaş ekle!</div>';
+                viewAllLink.classList.add('hidden');
+            } else {
+                user.friends.slice(0, 6).forEach(friendEmail => {
+                    const friend = users[friendEmail];
+                    if (friend) {
+                        const friendDiv = document.createElement('div');
+                        friendDiv.className = 'friend-item';
+                        friendDiv.innerHTML = `
+                            <div class="friend-pic">FOTO</div>
+                            <a href="#" class="friend-name">${friend.name.split(' ')[0]}</a>
+                        `;
+                        friendsList.appendChild(friendDiv);
+                    }
+                });
+                
+                if (user.friends.length > 6) {
+                    viewAllLink.classList.remove('hidden');
+                } else {
+                    viewAllLink.classList.add('hidden');
+                }
+            }
+        }
+
+        function updateScrapsList() {
+            const user = getCurrentUser();
+            const scrapsList = document.getElementById('scrapsList');
+            
+            scrapsList.innerHTML = '';
+            
+            if (user.scraps.length === 0) {
+                scrapsList.innerHTML = '<div class="empty-state">Henüz hiç scrap yok. İlk scrapi sen yaz!</div>';
+            } else {
+                user.scraps.forEach(scrap => {
+                    const scrapDiv = document.createElement('div');
+                    scrapDiv.className = 'scrapbook-item';
+                    scrapDiv.innerHTML = `
+                        <div class="scrap-author">${scrap.author}</div>
+                        <div class="scrap-content">${scrap.content}</div>
+                        <div class="scrap-date">${new Date(scrap.date).toLocaleString('tr-TR')}</div>
+                    `;
+                    scrapsList.appendChild(scrapDiv);
+                });
+            }
+        }
+
+        function updateTestimonialsList() {
+            const user = getCurrentUser();
+            const testimonialsList = document.getElementById('testimonialsList');
+
+            testimonialsList.innerHTML = '';
+
+            if (user.testimonials.length === 0) {
+                testimonialsList.innerHTML = '<div class="empty-state">Henüz testimonial yok. Arkadaşların sana testimonial yazmasını bekle!</div>';
+            } else {
+                user.testimonials.forEach(testimonial => {
+                    const testimonialDiv = document.createElement('div');
+                    testimonialDiv.className = 'testimonial-item';
+                    testimonialDiv.innerHTML = `
+                        <div class="testimonial-author">${testimonial.author}</div>
+                        <div class="testimonial-text">${testimonial.content}</div>
+                        <div class="scrap-date">${new Date(testimonial.date).toLocaleString('tr-TR')}</div>
+                    `;
+                    testimonialsList.appendChild(testimonialDiv);
+                });
+            }
+        }
+
+        // Durum paylaşma
+        function updateCharCounter() {
+            const statusInput = document.getElementById('statusInput');
+            const charCounter = document.getElementById('charCounter');
+            const postBtn = document.getElementById('postBtn');
+            const maxLength = 500;
+            const currentLength = statusInput.value.length;
+
+            charCounter.textContent = `${currentLength}/${maxLength}`;
+
+            if (currentLength > maxLength) {
+                charCounter.classList.add('error');
+                charCounter.classList.remove('warning');
+                postBtn.disabled = true;
+            } else if (currentLength > maxLength * 0.8) {
+                charCounter.classList.add('warning');
+                charCounter.classList.remove('error');
+                postBtn.disabled = false;
+            } else {
+                charCounter.classList.remove('error', 'warning');
+                postBtn.disabled = false;
+            }
+        }
+
+        function postStatus() {
+            const statusInput = document.getElementById('statusInput');
+            const statusText = statusInput.value.trim();
+            const user = getCurrentUser();
+
+            if (statusText.length === 0 || statusText.length > 500) {
+                showError('statusError', 'Durum 1 ila 500 karakter arasında olmalıdır.');
+                return;
+            }
+
+            // Simülasyon: Scrapbook'a yeni bir scrap olarak ekle
+            user.scraps.unshift({
+                author: user.name,
+                content: statusText,
+                date: new Date().toISOString()
+            });
+            saveData();
+            updateScrapsList();
+            statusInput.value = '';
+            updateCharCounter();
+        }
+
+        // Kişi Arama
+        function searchPeople() {
+            const searchTerm = document.getElementById('peopleSearch').value.toLowerCase();
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = '';
+
+            if (searchTerm.length < 2) {
+                searchResults.innerHTML = '<div class="empty-state">Aramak için en az 2 karakter girin.</div>';
+                return;
+            }
+
+            const allUsers = getAllUsers();
+            const currentUser = getCurrentUser();
+            const results = allUsers.filter(user =>
+                user.email !== currentUser.email && // Kendini hariç tut
+                user.name.toLowerCase().includes(searchTerm) ||
+                user.location.toLowerCase().includes(searchTerm)
+            );
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="empty-state">Sonuç bulunamadı.</div>';
+            } else {
+                results.forEach(person => {
+                    const personDiv = document.createElement('div');
+                    personDiv.className = 'person-item';
+                    const isFriend = currentUser.friends.includes(person.email);
+                    personDiv.innerHTML = `
+                        <div class="person-pic">FOTO</div>
+                        <div class="person-info">
+                            <div class="person-name">${person.name}</div>
+                            <div class="person-location">${person.location}</div>
+                        </div>
+                        <button class="add-friend-btn" onclick="addFriend('${person.email}')" ${isFriend ? 'disabled' : ''}>
+                            ${isFriend ? 'Arkadaşın' : 'Arkadaş Ekle'}
+                        </button>
+                    `;
+                    searchResults.appendChild(personDiv);
+                });
+            }
+        }
+
+        function addFriend(friendEmail) {
+            const currentUser = getCurrentUser();
+            const friendUser = users[friendEmail];
+
+            if (currentUser && friendUser) {
+                if (!currentUser.friends.includes(friendEmail)) {
+                    currentUser.friends.push(friendEmail);
+                    // İki taraflı arkadaşlık eklemek isterseniz:
+                    // friendUser.friends.push(currentUserEmail);
+                    saveData();
+                    updateFriendsList();
+                    searchPeople(); // Arama sonuçlarını güncelle
+                    showSuccess('mainPage', `${friendUser.name} arkadaş olarak eklendi!`);
+                } else {
+                    showError('mainPage', `${friendUser.name} zaten arkadaşınız.`);
+                }
+            }
+        }
+
+        // Sayfa gösterim fonksiyonları
+        function showHome() {
+            // Ana sayfa zaten gösteriliyor, sadece verileri yenile
+            loadUserData();
+        }
+
+        function showProfile() {
+            alert('Profil sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+        function showFriends() {
+            alert('Arkadaşlar sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+        function showMessages() {
+            alert('Mesajlar sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+        function showCommunities() {
+            alert('Topluluklar sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+        function showSearch() {
+            // Arama modülünü açabiliriz, şimdilik sadece alert
+            alert('Arama sayfası henüz geliştirilmedi. Ana sayfadaki "Kişi Ara" modülünü kullanabilirsiniz.');
+        }
+
+        function showPhotos() {
+            alert('Fotoğraflar sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+        function showScraps() {
+            alert('Scraps sayfası henüz geliştirilmedi. Ana sayfadaki "Scrapbook" modülünü kullanabilirsiniz.'); // Yer tutucu
+        }
+
+        function showTestimonials() {
+            alert('Testimonials sayfası henüz geliştirilmedi. Ana sayfadaki "Son Testimonials" modülünü kullanabilirsiniz.'); // Yer tutucu
+        }
+
+        function showEvents() {
+            alert('Etkinlikler sayfası henüz geliştirilmedi.'); // Yer tutucu
+        }
+
+
+        function logout() {
+            currentUserEmail = null;
+            document.getElementById('mainPage').classList.add('hidden');
+            showLogin();
+        }
+
+        // Yardımcı fonksiyonlar
+        function showError(elementId, message) {
+            const errorDiv = document.getElementById(elementId);
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+            setTimeout(() => {
+                errorDiv.classList.add('hidden');
+            }, 3000); // 3 saniye sonra mesajı gizle
+        }
+
+        function showSuccess(elementId, message) {
+            let successDiv = document.getElementById(elementId + 'Success');
+            if (!successDiv) {
+                // Eğer yoksa, ana sayfanın altına ekleyebiliriz
+                const container = document.getElementById('mainPage') || document.getElementById('signupPage');
+                successDiv = document.createElement('div');
+                successDiv.id = elementId + 'Success';
+                successDiv.className = 'success-message hidden';
+                container.appendChild(successDiv);
+            }
+            successDiv.textContent = message;
+            successDiv.classList.remove('hidden');
+            setTimeout(() => {
+                successDiv.classList.add('hidden');
+            }, 3000); // 3 saniye sonra mesajı gizle
+        }
+
+
+        // Sayfa yüklendiğinde varsayılan olarak giriş sayfasını göster
+        document.addEventListener('DOMContentLoaded', () => {
+            showLogin();
+        });
+
+        // Test için birkaç örnek kullanıcı ekleyelim (gerçek veritabanı yerine)
+        users['test@example.com'] = {
+            email: 'test@example.com',
+            name: 'Test Kullanıcısı',
+            password: 'password123',
+            age: 25,
+            gender: 'erkek',
+            location: 'Ankara, Türkiye',
+            relationship: 'bekar',
+            friends: ['ayse@example.com', 'mehmet@example.com'],
+            scraps: [{
+                author: 'Test Kullanıcısı',
+                content: 'Merhaba orkut! İlk scrapim!',
+                date: new Date('2025-07-30T10:00:00Z').toISOString()
+            }, {
+                author: 'Ayşe Yılmaz',
+                content: 'Hoş geldin Test Kullanıcısı! Çok sevindim katıldığına!',
+                date: new Date('2025-07-30T11:30:00Z').toISOString()
+            }],
+            testimonials: [{
+                author: 'Mehmet Can',
+                content: 'Test Kullanıcısı harika bir arkadaş!',
+                date: new Date('2025-07-28T14:00:00Z').toISOString()
+            }]
+        };
+
+        users['ayse@example.com'] = {
+            email: 'ayse@example.com',
+            name: 'Ayşe Yılmaz',
+            password: 'ayse123',
+            age: 28,
+            gender: 'kadın',
+            location: 'İzmir, Türkiye',
+            relationship: 'ilişkide',
+            friends: ['test@example.com'],
+            scraps: [],
+            testimonials: []
+        };
+
+        users['mehmet@example.com'] = {
+            email: 'mehmet@example.com',
+            name: 'Mehmet Can',
+            password: 'mehmet123',
+            age: 30,
+            gender: 'erkek',
+            location: 'Bursa, Türkiye',
+            relationship: 'evli',
+            friends: ['test@example.com'],
+            scraps: [],
+            testimonials: [{
+                author: 'Ayşe Yılmaz',
+                content: 'Mehmet çok güvenilir bir insan.',
+                date: new Date('2025-07-29T09:00:00Z').toISOString()
+            }]
+        };
+
+    </script>
+</body>
+</html>
