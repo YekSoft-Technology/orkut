@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orkut</title></title>
     <style>
-        * {
+    * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 14px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #fafafa;
     color: #262626;
     line-height: 1.5;
 }
@@ -27,18 +27,27 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .login-container, .signup-container {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
     padding: 40px;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .signup-container {
@@ -46,17 +55,17 @@ body {
 }
 
 .login-logo {
-    height: 80px;
+    height: 60px;
     margin-bottom: 30px;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
 .login-title {
     color: #262626;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
     margin-bottom: 30px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4, #e1306c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -73,45 +82,46 @@ body {
 .form-label {
     display: block;
     color: #262626;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
 }
 
 .form-input, .form-select {
     width: 100%;
-    padding: 12px 16px;
-    border: 2px solid #e1e5e9;
+    padding: 14px 16px;
+    border: 1px solid #dbdbdb;
     font-size: 14px;
     border-radius: 12px;
     background: #fafafa;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     outline: none;
 }
 
 .form-input:focus, .form-select:focus {
-    border-color: #667eea;
+    border-color: #405de6;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.1);
 }
 
 .login-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4);
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 24px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     border-radius: 12px;
     margin: 8px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(64, 93, 230, 0.3);
+    width: calc(50% - 16px);
 }
 
 .login-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(64, 93, 230, 0.4);
 }
 
 .login-btn:active {
@@ -121,29 +131,29 @@ body {
 /* Ana Sayfa */
 .header {
     background: white;
-    border-bottom: 1px solid #e1e5e9;
+    border-bottom: 1px solid #dbdbdb;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
-    max-width: 1200px;
+    max-width: 975px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 20px;
+    padding: 16px 20px;
 }
 
 .logo {
-    height: 36px;
+    height: 32px;
 }
 
 .header-links {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     align-items: center;
 }
 
@@ -152,24 +162,42 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    position: relative;
 }
 
 .header-links a:hover {
-    background: #f5f5f5;
-    color: #667eea;
+    background: #fafafa;
+    color: #405de6;
+}
+
+.header-links a:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    transition: width 0.2s ease;
+}
+
+.header-links a:first-child:hover::after {
+    width: 100%;
 }
 
 .user-info {
     color: #8e8e8e;
     font-size: 14px;
+    font-weight: 600;
     margin-right: 15px;
 }
 
 .main-container {
-    max-width: 1200px;
+    max-width: 975px;
     margin: 0 auto;
     background: #fafafa;
     min-height: calc(100vh - 80px);
@@ -177,8 +205,8 @@ body {
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 30px;
+    grid-template-columns: 293px 1fr;
+    gap: 35px;
     padding: 30px 20px;
 }
 
@@ -189,7 +217,7 @@ body {
 }
 
 .main-content {
-    max-width: 600px;
+    max-width: 614px;
 }
 
 .module {
@@ -197,17 +225,29 @@ body {
     border-radius: 16px;
     margin-bottom: 24px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e1e5e9;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dbdbdb;
 }
 
 .module-header {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    background: white;
     padding: 16px 20px;
-    border-bottom: 1px solid #e1e5e9;
+    border-bottom: 1px solid #efefef;
     font-weight: 600;
     color: #262626;
     font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.module-header::before {
+    content: '';
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    border-radius: 2px;
+    margin-right: 12px;
 }
 
 .module-content {
@@ -217,7 +257,7 @@ body {
 .profile-pic {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4, #e1306c);
     border-radius: 50%;
     margin: 0 auto 16px;
     display: flex;
@@ -226,7 +266,29 @@ body {
     color: white;
     font-size: 12px;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(64, 93, 230, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-pic::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.profile-pic::after {
+    content: 'FOTO';
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
 }
 
 .profile-name {
@@ -245,10 +307,23 @@ body {
 }
 
 .online-indicator {
-    color: #28a745;
+    color: #00d4aa;
     font-size: 12px;
     text-align: center;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.online-indicator::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #00d4aa;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .friends-list {
@@ -262,16 +337,19 @@ body {
     text-align: center;
     cursor: pointer;
     transition: transform 0.2s ease;
+    padding: 8px;
+    border-radius: 12px;
 }
 
 .friend-item:hover {
     transform: translateY(-2px);
+    background: #fafafa;
 }
 
 .friend-pic {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4);
     border-radius: 50%;
     margin: 0 auto 8px;
     display: flex;
@@ -279,6 +357,28 @@ body {
     justify-content: center;
     color: white;
     font-size: 10px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.friend-pic::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.friend-pic::after {
+    content: 'FOTO';
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 600;
 }
 
@@ -294,7 +394,7 @@ body {
 }
 
 .navigation-links li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .navigation-links a {
@@ -302,47 +402,60 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 8px;
-    display: block;
-    transition: all 0.3s ease;
+    padding: 12px 16px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.navigation-links a::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    border-radius: 50%;
+    opacity: 0.7;
 }
 
 .navigation-links a:hover {
-    background: #f5f5f5;
-    color: #667eea;
+    background: linear-gradient(45deg, rgba(64, 93, 230, 0.1), rgba(225, 48, 108, 0.1));
+    color: #405de6;
     transform: translateX(4px);
 }
 
 .search-box {
     width: 100%;
     padding: 12px 16px;
-    border: 2px solid #e1e5e9;
+    border: 1px solid #dbdbdb;
     font-size: 14px;
     border-radius: 12px;
     background: #fafafa;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     outline: none;
     margin-bottom: 16px;
 }
 
 .search-box:focus {
-    border-color: #667eea;
+    border-color: #405de6;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.1);
 }
 
 .tweet-composer {
     background: #fafafa;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 20px;
     margin-bottom: 16px;
+    border: 1px solid #efefef;
 }
 
 .tweet-input {
     width: 100%;
     min-height: 100px;
-    border: 2px solid #e1e5e9;
+    border: 1px solid #dbdbdb;
     padding: 16px;
     font-size: 14px;
     border-radius: 12px;
@@ -350,12 +463,12 @@ body {
     resize: vertical;
     outline: none;
     font-family: inherit;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .tweet-input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #405de6;
+    box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.1);
 }
 
 .tweet-controls {
@@ -376,11 +489,11 @@ body {
 }
 
 .char-counter.error {
-    color: #dc3545;
+    color: #e1306c;
 }
 
 .post-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -388,28 +501,42 @@ body {
     font-weight: 600;
     cursor: pointer;
     border-radius: 12px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(64, 93, 230, 0.3);
 }
 
 .post-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(64, 93, 230, 0.4);
 }
 
 .post-btn:disabled {
-    background: #e1e5e9;
+    background: #dbdbdb;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 .scrapbook-item, .testimonial-item {
-    border-bottom: 1px solid #e1e5e9;
+    border-bottom: 1px solid #efefef;
     padding: 16px 0;
-    last-child: {
-        border-bottom: none;
-    }
+    position: relative;
+}
+
+.scrapbook-item:last-child, .testimonial-item:last-child {
+    border-bottom: none;
+}
+
+.scrapbook-item::before, .testimonial-item::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 16px;
+    width: 3px;
+    height: calc(100% - 32px);
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    border-radius: 2px;
+    opacity: 0.3;
 }
 
 .scrap-author, .testimonial-author {
@@ -417,21 +544,35 @@ body {
     color: #262626;
     margin-bottom: 8px;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.scrap-author::before, .testimonial-author::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .scrap-content, .testimonial-text {
     color: #262626;
     margin-bottom: 8px;
     line-height: 1.6;
+    padding-left: 32px;
 }
 
 .scrap-date {
     color: #8e8e8e;
     font-size: 12px;
+    padding-left: 32px;
 }
 
 .add-friend-btn {
-    background: linear-gradient(135deg, #28a745, #20c997);
+    background: linear-gradient(45deg, #00d4aa, #01b4a4);
     color: white;
     border: none;
     padding: 8px 16px;
@@ -439,17 +580,17 @@ body {
     font-weight: 600;
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     margin-top: 8px;
 }
 
 .add-friend-btn:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
 }
 
 .add-friend-btn:disabled {
-    background: #6c757d;
+    background: #8e8e8e;
     cursor: not-allowed;
     transform: none;
 }
@@ -458,18 +599,22 @@ body {
     display: flex;
     align-items: center;
     padding: 16px;
-    border-bottom: 1px solid #e1e5e9;
-    transition: background 0.2s ease;
+    border-bottom: 1px solid #efefef;
+    transition: all 0.2s ease;
+    border-radius: 12px;
+    margin-bottom: 8px;
 }
 
 .person-item:hover {
-    background: #f8f9fa;
+    background: linear-gradient(45deg, rgba(64, 93, 230, 0.05), rgba(225, 48, 108, 0.05));
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .person-pic {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4);
     border-radius: 50%;
     margin-right: 16px;
     display: flex;
@@ -477,6 +622,28 @@ body {
     justify-content: center;
     color: white;
     font-size: 10px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+.person-pic::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.person-pic::after {
+    content: 'FOTO';
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: 600;
 }
 
@@ -501,28 +668,29 @@ body {
     color: #8e8e8e;
     font-style: italic;
     padding: 40px 20px;
-    background: #f8f9fa;
+    background: linear-gradient(45deg, rgba(64, 93, 230, 0.05), rgba(225, 48, 108, 0.05));
     border-radius: 12px;
+    border: 1px dashed #dbdbdb;
 }
 
 .error-message {
-    color: #dc3545;
+    color: #e1306c;
     font-size: 12px;
     margin-top: 8px;
-    padding: 8px 12px;
-    background: #f8d7da;
-    border-radius: 8px;
-    border: 1px solid #f5c6cb;
+    padding: 12px 16px;
+    background: rgba(225, 48, 108, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(225, 48, 108, 0.2);
 }
 
 .success-message {
-    color: #155724;
+    color: #00d4aa;
     font-size: 12px;
     margin-top: 8px;
-    padding: 8px 12px;
-    background: #d4edda;
-    border-radius: 8px;
-    border: 1px solid #c3e6cb;
+    padding: 12px 16px;
+    background: rgba(0, 212, 170, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 170, 0.2);
 }
 
 .hidden {
@@ -534,7 +702,7 @@ body {
     padding: 24px;
     color: #8e8e8e;
     font-size: 12px;
-    border-top: 1px solid #e1e5e9;
+    border-top: 1px solid #dbdbdb;
     background: white;
     margin-top: 40px;
 }
@@ -574,9 +742,14 @@ body {
         grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
         gap: 8px;
     }
+    
+    .login-btn {
+        width: 100%;
+        margin: 8px 0;
+    }
 }
 
-/* Animasyonlar */
+/* Yeni Animasyonlar */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -588,9 +761,28 @@ body {
     }
 }
 
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .module {
     animation: fadeInUp 0.5s ease-out;
 }
+
+.friend-item {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.friend-item:nth-child(2) { animation-delay: 0.1s; }
+.friend-item:nth-child(3) { animation-delay: 0.2s; }
+.friend-item:nth-child(4) { animation-delay: 0.3s; }
 
 /* Scroll Bar Özelleştirme */
 ::-webkit-scrollbar {
@@ -598,17 +790,70 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #fafafa;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #405de6, #833ab4);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5a6fd8, #6b4190);
+    background: linear-gradient(45deg, #3651d4, #7325a3);
+}
+
+/* Instagram/Facebook stil butonlar */
+.header-links a {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(64, 93, 230, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.header-links a:hover::before {
+    left: 100%;
+}
+
+/* Özel Instagram tarzı story ring efekti */
+.profile-pic, .friend-pic, .person-pic {
+    position: relative;
+}
+
+.profile-pic::after, .friend-pic::after, .person-pic::after {
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(45deg, #405de6, #833ab4, #e1306c, #fd1d1d);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+}
+
+/* Hover efektleri */
+.module:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Gradient text efektleri */
+.module-header {
+    background: linear-gradient(45deg, #405de6, #833ab4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
     </style>
 </head>
@@ -1295,3 +1540,4 @@ body {
 </body>
 
 </html>
+
